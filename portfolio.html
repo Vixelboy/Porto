@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhamad Ikbal Tawakal — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#00b4ff;--blue-b:#40d0ff;--blue-dim:#005f8a;
+  --blue-glow:rgba(0,180,255,0.15);--blue-glow2:rgba(0,180,255,0.06);
+  --cyan:#00ffee;--violet:#7b5cff;
+  --bg:#030810;--bg2:#060f1c;--bg3:#0a1628;--bg4:#0d1e35;
+  --border:rgba(0,180,255,0.15);--border-b:rgba(0,180,255,0.4);
+  --text:#d0eeff;--text-dim:#4a7a9b;--text-mid:#7db3cc;
+  --red:#ff4060;--amber:#ffcc44;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 4px);pointer-events:none;z-index:9998;}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,180,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,255,0.04) 1px,transparent 1px);background-size:48px 48px;}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);}
+.orb1{width:500px;height:500px;top:-100px;right:-100px;background:rgba(0,180,255,0.08);}
+.orb2{width:400px;height:400px;bottom:10%;left:-80px;background:rgba(123,92,255,0.07);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,8,16,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Orbitron',monospace;font-weight:700;font-size:14px;color:var(--blue-b);text-decoration:none;letter-spacing:2px;display:flex;align-items:center;gap:10px;}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue);animation:pdot 2s ease-in-out infinite;flex-shrink:0;}
+@keyframes pdot{0%,100%{box-shadow:0 0 8px var(--blue);}50%{box-shadow:0 0 22px var(--blue),0 0 42px rgba(0,180,255,.3);}}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .2s;font-family:'IBM Plex Mono',monospace;}
+.nav-links a:hover,.nav-links a.active{color:var(--blue-b);}
+.nav-badge{display:flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border-b);border-radius:20px;font-size:11px;color:var(--blue);font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+
+/* LAYOUT */
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 40px;}
+section{padding:96px 0;}
+.sec-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.sec-title{font-family:'Orbitron',monospace;font-size:clamp(24px,4vw,40px);font-weight:700;letter-spacing:-0.5px;color:var(--text);margin-bottom:14px;}
+.sec-title span{color:var(--blue-b);}
+.sec-div{width:60px;height:2px;background:linear-gradient(90deg,var(--blue),transparent);margin-bottom:48px;}
+
+/* TECH ICON STRIP */
+.tech-strip{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:20px;}
+.tech-ico{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.6;transition:opacity .2s;cursor:default;}
+.tech-ico:hover{opacity:1;}
+.tech-ico img{width:28px;height:28px;object-fit:contain;filter:brightness(0) invert(1);border-radius:4px;}
+.tech-ico span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:1px;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:4px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:all .25s;border:none;letter-spacing:.5px;}
+.btn-primary{background:linear-gradient(135deg,var(--blue),#0066cc);color:#fff;box-shadow:0 0 20px rgba(0,180,255,.25);}
+.btn-primary:hover{box-shadow:0 0 40px rgba(0,180,255,.5),0 8px 30px rgba(0,0,0,.3);transform:translateY(-3px);}
+.btn-ghost{background:transparent;color:var(--blue);border:1px solid var(--border-b);}
+.btn-ghost:hover{background:var(--blue-glow);transform:translateY(-3px);box-shadow:0 0 20px rgba(0,180,255,.15);}
+
+/* TERMINAL */
+.tc{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.tc-bar{padding:12px 16px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.tc-dot{width:10px;height:10px;border-radius:50%;}
+.tc-dot.r{background:#ff5f57;}.tc-dot.y{background:#febc2e;}.tc-dot.g{background:#28c840;}
+.tc-ttl{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);margin-left:auto;letter-spacing:1px;}
+.tc-body{padding:18px 20px;}
+.tc-l{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:5px;color:var(--text-dim);}
+.tc-l .p{color:var(--blue);}.tc-l .c{color:var(--cyan);}.tc-l .v{color:var(--text);}.tc-l .k{color:var(--violet);font-style:italic;}.tc-l .e{color:var(--red);}.tc-l .s{color:var(--amber);}
+.tc-cursor{display:inline-block;width:7px;height:13px;background:var(--blue);animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;}
+.hero-grid{display:grid;grid-template-columns:1fr 390px;gap:56px;align-items:center;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--border-b);border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--blue);margin-bottom:22px;background:var(--blue-glow2);animation:fu .6s ease .2s both;}
+.hero-name{font-family:'Orbitron',monospace;font-size:clamp(30px,5vw,62px);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-bottom:10px;animation:fu .6s ease .35s both;}
+.hero-name .hl{display:block;background:linear-gradient(135deg,var(--blue-b) 0%,var(--cyan) 50%,var(--violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 20px rgba(0,180,255,.4));}
+.hero-role{font-size:15px;color:var(--text-mid);margin-bottom:18px;animation:fu .6s ease .5s both;line-height:1.6;}
+.hero-role strong{color:var(--blue-b);font-weight:500;}
+.hero-desc{font-size:13px;color:var(--text-dim);line-height:1.85;max-width:500px;margin-bottom:28px;animation:fu .6s ease .65s both;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;animation:fu .6s ease .8s both;margin-bottom:28px;}
+
+/* TECH ICONS HERO */
+.hero-tools{animation:fu .6s ease 1s both;}
+.hero-tools-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.tool-icons{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.tool-icon{width:36px;height:36px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:default;position:relative;}
+.tool-icon:hover{border-color:var(--border-b);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,180,255,.15);}
+.tool-icon svg{width:18px;height:18px;}
+.tool-icon img{width:20px;height:20px;object-fit:contain;}
+.tool-icon .tip{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--blue);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
+.tool-icon:hover .tip{opacity:1;}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border-top:1px solid var(--border);margin-top:16px;}
+.stat-item{padding:14px 16px;background:var(--bg3);}
+.stat-item:not(:last-child){border-right:1px solid var(--border);}
+.stat-num{font-family:'Orbitron',monospace;font-size:20px;font-weight:700;color:var(--blue-b);}
+.stat-lbl{font-size:11px;color:var(--text-dim);margin-top:2px;}
+@keyframes fu{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+/* DESIGN PHOTO CARD */
+.design-photo-card{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border-b);box-shadow:0 0 40px rgba(0,180,255,0.12);aspect-ratio:1/1;background:var(--bg2);}
+.design-photo-card img{width:100%;height:100%;object-fit:cover;display:block;}
+.design-photo-overlay{position:absolute;bottom:0;left:0;right:0;padding:18px 20px;background:linear-gradient(to top,rgba(3,8,16,.92) 0%,transparent 100%);}
+.design-photo-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(0,180,255,0.15);border:1px solid var(--border-b);border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--blue-b);letter-spacing:1px;margin-bottom:6px;}
+.design-photo-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--text);letter-spacing:.5px;}
+.design-photo-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,180,255,0.04) 0%,transparent 50%);pointer-events:none;z-index:1;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.about-text p{color:var(--text-mid);margin-bottom:14px;font-size:14px;line-height:1.85;}
+.about-text strong{color:var(--blue-b);font-weight:500;}
+.about-badges{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;}
+.abadge{padding:6px 14px;background:var(--bg3);border:1px solid var(--border-b);border-radius:20px;font-size:11px;color:var(--blue);font-family:'IBM Plex Mono',monospace;}
+.info-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.info-head{padding:13px 20px;background:var(--bg3);border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:2px;text-transform:uppercase;}
+.info-row{display:grid;grid-template-columns:110px 1fr;padding:10px 20px;border-bottom:1px solid rgba(0,180,255,.06);font-size:13px;}
+.info-row:last-child{border-bottom:none;}
+.ik{color:var(--text-dim);font-family:'IBM Plex Mono',monospace;font-size:11px;padding-top:1px;}
+.iv{color:var(--text);}.iv.c{color:var(--cyan);}.iv.b{color:var(--blue-b);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:15px;}
+.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;transition:all .3s;position:relative;overflow:hidden;}
+.skill-card::after{content:'';position:absolute;inset:0;border-radius:10px;background:linear-gradient(135deg,rgba(0,180,255,.05) 0%,transparent 60%);opacity:0;transition:opacity .3s;}
+.skill-card:hover{border-color:var(--border-b);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3),0 0 30px rgba(0,180,255,.07);}
+.skill-card:hover::after{opacity:1;}
+.skill-hd{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.skill-ico{font-size:20px;}
+.skill-name{font-family:'Orbitron',monospace;font-weight:600;font-size:11px;color:var(--text);letter-spacing:.5px;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{padding:4px 10px;background:var(--bg4);border:1px solid var(--border);border-radius:3px;font-size:11px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;}
+
+/* EXPERIENCE */
+.exp-item{display:grid;grid-template-columns:150px 1fr;gap:36px;padding:28px 0;border-bottom:1px solid var(--border);}
+.exp-item:first-child{padding-top:0;}
+.exp-period{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);margin-bottom:8px;}
+.exp-type{display:inline-block;padding:3px 10px;background:var(--blue-glow2);border:1px solid var(--border);border-radius:3px;font-size:10px;color:var(--blue);font-family:'IBM Plex Mono',monospace;letter-spacing:1px;}
+.exp-co{font-size:11px;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;}
+.exp-role{font-family:'Orbitron',monospace;font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:.3px;}
+.exp-desc{font-size:13px;color:var(--text-dim);margin-bottom:12px;line-height:1.8;}
+
+/* PORTFOLIO */
+.porto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px;}
+.porto-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s;}
+.porto-card:hover{border-color:var(--border-b);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 40px rgba(0,180,255,.08);}
+.porto-media{position:relative;aspect-ratio:16/9;background:var(--bg3);overflow:hidden;border-bottom:1px solid var(--border);}
+.porto-media img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.porto-card:hover .porto-media img{transform:scale(1.04);}
+.porto-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(3,8,16,.7) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
+.porto-card:hover .porto-overlay{opacity:1;}
+.porto-play{width:44px;height:44px;border-radius:50%;background:rgba(0,180,255,.9);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;box-shadow:0 0 30px rgba(0,180,255,.5);}
+.porto-fmt{position:absolute;top:10px;right:10px;padding:3px 10px;border-radius:3px;background:rgba(0,180,255,.15);border:1px solid var(--border-b);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:1px;}
+.porto-body{padding:16px 18px;}
+.porto-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:5px;font-family:'IBM Plex Mono',monospace;}
+.porto-title{font-family:'Orbitron',monospace;font-weight:600;font-size:13px;color:var(--text);margin-bottom:7px;letter-spacing:.3px;}
+.porto-desc{font-size:12px;color:var(--text-dim);margin-bottom:12px;line-height:1.7;}
+.porto-foot{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--border);}
+.porto-link{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.porto-link:hover{color:var(--cyan);}
+
+/* PLACEHOLDER CARD */
+.porto-ph-box{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--text-dim);}
+.porto-ph-ico{width:50px;height:50px;border-radius:12px;border:1px dashed var(--border-b);display:flex;align-items:center;justify-content:center;font-size:22px;opacity:.5;}
+.porto-ph-txt{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.4;}
+
+/* FILTER TABS */
+.filter-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.filter-btn{padding:7px 18px;background:transparent;border:1px solid var(--border);border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);cursor:pointer;transition:all .2s;letter-spacing:1px;}
+.filter-btn:hover{border-color:var(--border-b);color:var(--blue);}
+.filter-btn.active{background:var(--blue-glow);border-color:var(--border-b);color:var(--blue-b);}
+.porto-card.hidden{display:none;}
+@keyframes chatpulse{0%,100%{transform:scale(1);opacity:.2;}50%{transform:scale(1.15);opacity:.35;}}
+
+/* CERTS */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:13px;}
+.cert-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s;}
+.cert-card:hover{border-color:var(--border-b);}
+.cert-ico{width:42px;height:42px;border-radius:8px;flex-shrink:0;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;}
+.cert-ico img{width:100%;height:100%;object-fit:cover;}
+.cert-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.cert-issuer{font-size:11px;color:var(--text-dim);margin-bottom:3px;font-family:'IBM Plex Mono',monospace;}
+.cert-yr{font-size:11px;color:var(--blue);font-family:'IBM Plex Mono',monospace;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.contact-lead{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,32px);font-weight:700;line-height:1.25;color:var(--text);margin-bottom:14px;letter-spacing:-.5px;}
+.contact-lead span{color:var(--blue-b);}
+.contact-sub{font-size:13px;color:var(--text-dim);margin-bottom:24px;line-height:1.85;}
+.c-links{display:flex;flex-direction:column;gap:9px;}
+.c-link{display:flex;align-items:center;gap:14px;padding:13px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);text-decoration:none;font-size:13px;transition:all .2s;}
+.c-link:hover{border-color:var(--border-b);background:var(--blue-glow2);color:var(--blue-b);transform:translateX(4px);}
+.c-ico{width:34px;height:34px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.c-lbl{font-size:10px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;margin-bottom:1px;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26px 48px;display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);}
+
+/* REVEAL — scroll fade-in */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--blue-dim);border-radius:2px;}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}.nav-links{display:none;}
+  .wrap{padding:0 20px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .tc.hero-tc .tc-body{display:none;}
+  .tc.hero-tc .tc-bar{border-bottom:1px solid var(--border);}
+  .tc.hero-tc{display:block;margin-top:24px;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:32px;}
+  .exp-item{grid-template-columns:1fr;gap:8px;}
+  .stat-row{grid-template-columns:repeat(3,1fr);}
+  .stat-num{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-dot"></div>
+    IKBAL<span style="color:var(--text-dim);font-weight:400;">.DEV</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">exp</a></li>
+    <li><a href="#portfolio">projects</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <div class="nav-badge">
+    <div class="nav-dot" style="width:6px;height:6px;"></div>
+    open to collaboration
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge"><span>▶</span>&nbsp; AI Engineer · Vibe Coder · Creative Builder</div>
+        <h1 class="hero-name">
+          Hai, saya<br>
+          <span class="hl">IKBAL TAWAKAL</span>
+        </h1>
+        <p class="hero-role">
+          <strong>AI Engineer</strong> · Prompt Engineer · Graphic Designer<br>
+          <strong>Vibe Coder</strong> · AI Automation · AI Powered Builder
+        </p>
+        <p class="hero-desc">
+          Saya adalah lulusan Teknik Komputer dan Jaringan di SMK Banjar Asri Cimaung, yang tertarik dengan Hacking, Coding, dan Editing, dan saat ini saya terfokus untuk mengembangkannya, membangun solusi berbasis AI, Automation Pipeline dan Digital Creative yang berdampak nyata.
+        </p>
+        <div class="hero-ctas">
+          <a href="#portfolio" class="btn btn-primary">→ Lihat Projects</a>
+          <a href="#contact" class="btn btn-ghost">Hubungi Saya</a>
+          <a href="https://github.com/vixelboy" target="_blank" class="btn btn-ghost">
+            <!-- GitHub SVG -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <!-- TOOL ICONS -->
+        <div class="hero-tools">
+          <p class="hero-tools-label">// tools & stack</p>
+          <div class="tool-icons">
+            <!-- GitHub -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="var(--text-mid)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span class="tip">GitHub</span>
+            </div>
+            <!-- Vercel -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="var(--text-mid)"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
+              <span class="tip">Vercel</span>
+            </div>
+            <!-- Supabase -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C.111 12.886.706 14.09 1.77 14.09h9.295c.5 0 .9-.4.9-.9l-.064-12.154zM12.1 22.964c.015.986 1.26 1.41 1.874.637l9.262-11.652c.653-.834.057-2.038-1.007-2.038h-9.295c-.5 0-.9.4-.9.9l.066 12.153z" fill="#3ECF8E"/></svg>
+              <span class="tip">Supabase</span>
+            </div>
+            <!-- Streamlit -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="var(--red)"><path d="M15.544 6.176L24 10.91l-8.456 4.733-8.456-4.732 8.456-4.735zM.018 14.396L8.474 19.13l3.17-1.775-8.456-4.733-3.17 1.774zM15.526 17.354l3.17 1.775L24 16.355l-3.17-1.775-5.304 2.774z"/></svg>
+              <span class="tip">Streamlit</span>
+            </div>
+            <!-- Canva -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="var(--blue)"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.406 14.655c-.208.626-.854 1.676-1.72 1.676-.49 0-.73-.3-.73-.79 0-.104.022-.22.053-.343a6.553 6.553 0 0 1-.604.71c-.49.49-.958.714-1.427.714-.72 0-1.22-.573-1.22-1.323 0-.177.022-.364.063-.551-.49.708-.968 1.28-1.614 1.614-.28.15-.562.26-.843.26-.51 0-.853-.323-.853-.833 0-.49.312-.979.874-1.448.573-.48 1.447-.958 2.625-1.416.219-.78.334-1.52.334-2.197 0-.886-.343-1.323-.968-1.323-.437 0-.802.208-1.073.614-.063.104-.125.24-.188.395-.302.75-.573 1.229-.896 1.521-.28.26-.583.396-.916.396-.49 0-.792-.302-.792-.76 0-.563.437-1.178 1.261-1.762.875-.615 2.012-.948 3.282-.948.99 0 1.771.26 2.292.76.438.416.667 1.01.667 1.729 0 .686-.177 1.48-.51 2.343-.302.78-.448 1.26-.448 1.49 0 .228.115.344.27.344.333 0 .739-.51.99-1.272l.593.167zm-6.105.687c.303-.218.584-.52.855-.895l.75-2.645c-.938.396-1.614.813-2.04 1.24-.333.334-.5.647-.5.938 0 .302.167.458.468.458.167 0 .313-.032.468-.096z"/></svg>
+              <span class="tip">Canva</span>
+            </div>
+            <!-- Android Studio -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M0 0l6.084 10.5L0 21h2.625l4.625-8-.5-.875L2.547 0H0zm18.75 0l-4.203 7.272-.5.875 4.625 8H21.375L15.75 10.5 21.375 0H18.75zM7.5 13.5L4.875 18h14.25L16.5 13.5H7.5z" fill="#3DDC84"/></svg>
+              <span class="tip">Android Studio</span>
+            </div>
+            <!-- Google -->
+            <div class="tool-icon" style="background:var(--bg3);border-color:var(--border-b);">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#00b4ff"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#40d0ff"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#00ffee"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#7b5cff"/>
+              </svg>
+              <span class="tip">Google</span>
+            </div>
+            <!-- Anti Gravity (custom) -->
+            <div class="tool-icon" style="background:linear-gradient(135deg,#0a1628,#0d1e35);border-color:rgba(0,180,255,0.4);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><path d="M5.64 5.64l2.83 2.83M15.54 15.54l2.83 2.83M5.64 18.36l2.83-2.83M15.54 8.46l2.83-2.83"/></svg>
+              <span class="tip">Anti Gravity</span>
+            </div>
+            <!-- VS Code -->
+            <div class="tool-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" fill="var(--blue)"/></svg>
+              <span class="tip">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMINAL CARD -->
+      <div class="tc hero-tc" style="box-shadow:0 30px 80px rgba(0,0,0,.4);">
+        <div class="tc-bar">
+          <div class="tc-dot r"></div><div class="tc-dot y"></div><div class="tc-dot g"></div>
+          <span class="tc-ttl">// system.info</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-l"><span class="p">const</span> <span class="c">ikbal</span> = {</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">name</span>: <span class="s">"Muhamad Ikbal Tawakal"</span>,</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">alias</span>: <span class="s">"VixelBoy"</span>,</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">role</span>: <span class="s">"AI Engineer"</span>,</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">location</span>: <span class="s">"Bandung, ID 🇮🇩"</span>,</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">focus</span>: [<span class="s">"AI"</span>, <span class="s">"automation"</span>, <span class="s">"design"</span>],</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">github</span>: <span class="s">"@vixelboy"</span>,</div>
+          <div class="tc-l" style="padding-left:16px"><span class="k">status</span>: <span class="c">"open_collaboration"</span></div>
+          <div class="tc-l">}</div>
+          <div class="tc-l" style="margin-top:8px"><span class="p">$</span> <span class="c">run</span> <span class="v">build_future</span>.<span class="c">sh</span> <span class="tc-cursor"></span></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-item"><div class="stat-num">20+</div><div class="stat-lbl">Projects</div></div>
+          <div class="stat-item"><div class="stat-num">10+</div><div class="stat-lbl">Sertifikasi</div></div>
+          <div class="stat-item"><div class="stat-num">900+</div><div class="stat-lbl">Design</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">// 01 — about_me</p>
+      <h2 class="sec-title">Tentang <span>Saya</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          Halo! Saya <strong>Muhamad Ikbal Tawakal</strong>, dikenal sebagai <strong>VixelBoy</strong> —
+          seorang <strong>AI Engineer</strong> dan <strong>Prompt Engineer</strong> yang fokus membangun solusi berbasis kecerdasan buatan,
+          automation pipeline, dan pengalaman digital yang bermakna.
+        </p>
+        <p>
+          Saya passionate dalam <strong>AI automation</strong>, <strong>vibe coding</strong>, serta pengembangan aplikasi dan landing page yang fungsional dan estetik.
+          Sebagai <strong>Prompt Engineer</strong>, saya merancang instruksi AI yang presisi untuk menghasilkan output optimal dari model-model bahasa besar.
+        </p>
+        <p>
+          Di luar dunia AI, saya aktif sebagai <strong>desainer grafis</strong> — logo, branding, konten visual, hingga materi edukasi keamanan siber, <strong>social media specialist</strong>, feed instagram, dan desain lainnya. Saya juga pernah menjabat <strong>Ketua OSIS</strong> dan <strong>Ketua Angkatan</strong> di masa sekolah, serta berhasil lulus sebagai <strong>lulusan terbaik</strong> dengan nilai akademik tertinggi di angkatan saya di SMK Banjar Asri Cimaung.
+        </p>
+        <div class="about-badges">
+          <span class="abadge">🤖 AI Engineer</span>
+          <span class="abadge">⚡ Vibe Coder</span>
+          <span class="abadge">💬 Prompt Engineer</span>
+          <span class="abadge">🎨 Graphic Designer</span>
+          <span class="abadge">🔐 Cyber Enthusiast</span>
+          <span class="abadge">📱 Social Media Specialist</span>
+          <span class="abadge">🌐 Web Development</span>
+          <span class="abadge">🔥 AI Automation</span>
+        </div>
+
+        <!-- Tech stack di about -->
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-top:16px;margin-bottom:10px;">// tools yang saya gunakan</p>
+        <div class="tool-icons" style="gap:10px;">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="var(--text-mid)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg><span class="tip">GitHub</span></div>
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="var(--text-mid)"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg><span class="tip">Vercel</span></div>
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C.111 12.886.706 14.09 1.77 14.09h9.295c.5 0 .9-.4.9-.9l-.064-12.154zM12.1 22.964c.015.986 1.26 1.41 1.874.637l9.262-11.652c.653-.834.057-2.038-1.007-2.038h-9.295c-.5 0-.9.4-.9.9l.066 12.153z" fill="#3ECF8E"/></svg><span class="tip">Supabase</span></div>
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="var(--red)"><path d="M15.544 6.176L24 10.91l-8.456 4.733-8.456-4.732 8.456-4.735zM.018 14.396L8.474 19.13l3.17-1.775-8.456-4.733-3.17 1.774zM15.526 17.354l3.17 1.775L24 16.355l-3.17-1.775-5.304 2.774z"/></svg><span class="tip">Streamlit</span></div>
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="var(--blue)"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.406 14.655c-.208.626-.854 1.676-1.72 1.676-.49 0-.73-.3-.73-.79 0-.104.022-.22.053-.343a6.553 6.553 0 0 1-.604.71c-.49.49-.958.714-1.427.714-.72 0-1.22-.573-1.22-1.323 0-.177.022-.364.063-.551-.49.708-.968 1.28-1.614 1.614-.28.15-.562.26-.843.26-.51 0-.853-.323-.853-.833 0-.49.312-.979.874-1.448.573-.48 1.447-.958 2.625-1.416.219-.78.334-1.52.334-2.197 0-.886-.343-1.323-.968-1.323-.437 0-.802.208-1.073.614-.063.104-.125.24-.188.395-.302.75-.573 1.229-.896 1.521-.28.26-.583.396-.916.396-.49 0-.792-.302-.792-.76 0-.563.437-1.178 1.261-1.762.875-.615 2.012-.948 3.282-.948.99 0 1.771.26 2.292.76.438.416.667 1.01.667 1.729 0 .686-.177 1.48-.51 2.343-.302.78-.448 1.26-.448 1.49 0 .228.115.344.27.344.333 0 .739-.51.99-1.272l.593.167zm-6.105.687c.303-.218.584-.52.855-.895l.75-2.645c-.938.396-1.614.813-2.04 1.24-.333.334-.5.647-.5.938 0 .302.167.458.468.458.167 0 .313-.032.468-.096z"/></svg><span class="tip">Canva</span></div>
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M0 0l6.084 10.5L0 21h2.625l4.625-8-.5-.875L2.547 0H0zm18.75 0l-4.203 7.272-.5.875 4.625 8H21.375L15.75 10.5 21.375 0H18.75zM7.5 13.5L4.875 18h14.25L16.5 13.5H7.5z" fill="#3DDC84"/></svg><span class="tip">Android Studio</span></div>
+          <div class="tool-icon" style="background:linear-gradient(135deg,#0a1628,#0d1e35);border-color:rgba(0,180,255,0.4);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><path d="M5.64 5.64l2.83 2.83M15.54 15.54l2.83 2.83M5.64 18.36l2.83-2.83M15.54 8.46l2.83-2.83"/></svg><span class="tip">Anti Gravity</span></div>
+          <!-- Google -->
+          <div class="tool-icon" style="background:var(--bg3);border-color:var(--border-b);">
+            <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#00b4ff"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#40d0ff"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#00ffee"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#7b5cff"/>
+            </svg>
+            <span class="tip">Google</span>
+          </div>
+        </div>
+        <div style="margin-top:24px">
+          <a href="#contact" class="btn btn-ghost">→ Mari berkolaborasi</a>
+        </div>
+      </div>
+
+      <div>
+        <!-- Design Portfolio Photo -->
+        <div class="design-photo-card reveal">
+          <img src="img_design_portfolio.png" alt="Vixelboy Graphic Design Portfolio"
+            onerror="this.style.display='none';this.parentElement.querySelector('.photo-fallback').style.display='flex';">
+          <!-- Fallback jika foto belum ada -->
+          <div class="photo-fallback" style="display:none;width:100%;height:100%;min-height:320px;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(135deg,#060f1c,#0a1628);">
+            <div style="font-size:48px;opacity:0.4;">🎨</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;text-align:center;">Upload foto<br>img_design_portfolio.png</div>
+          </div>
+          <div class="design-photo-overlay" style="position:absolute;bottom:0;left:0;right:0;padding:18px 20px;background:linear-gradient(to top,rgba(3,8,16,.92) 0%,transparent 100%);z-index:2;">
+            <div class="design-photo-tag">🎨 Graphic Design</div>
+            <div class="design-photo-title">VixelBoy — Design Portfolio</div>
+          </div>
+        </div>
+
+        <!-- Profile Info Card -->
+        <div class="info-card" style="margin-top:20px;">
+          <div class="info-head">// profile.json</div>
+          <div class="info-row"><span class="ik">name</span><span class="iv">Muhamad Ikbal Tawakal</span></div>
+          <div class="info-row"><span class="ik">alias</span><span class="iv b">VixelBoy</span></div>
+          <div class="info-row"><span class="ik">location</span><span class="iv">Bandung, Indonesia</span></div>
+          <div class="info-row"><span class="ik">school</span><span class="iv">SMK Banjar Asri Cimaung</span></div>
+          <div class="info-row"><span class="ik">jurusan</span><span class="iv">TKJ (Teknik Komputer &amp; Jaringan)</span></div>
+          <div class="info-row"><span class="ik">email</span><span class="iv b" style="font-size:11px;"><a href="/cdn-cgi/l/email-protection#a8c5ddc0c9c5c9ccc1c3cac9c4dcc9dfc9c3c9c4e8cfc5c9c1c486cbc7c5" style="color:inherit;"><span class="__cf_email__" data-cfemail="b5d8c0ddd4d8d4d1dcded7d4d9c1d4c2d4ded4d9f5d2d8d4dcd99bd6dad8">[email&#160;protected]</span></a></span></div>
+          <div class="info-row"><span class="ik">wa</span><span class="iv">08817835601</span></div>
+          <div class="info-row"><span class="ik">github</span><span class="iv b">@vixelboy</span></div>
+          <div class="info-row"><span class="ik">sosmed</span><span class="iv b">@vixelboy_ (IG · TikTok · FB)</span></div>
+          <div class="info-row"><span class="ik">status</span><span class="iv c">● open collaboration</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">// 02 — skills_matrix</p>
+      <h2 class="sec-title">Skills <span>&amp; Tools</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal d1">
+        <div class="skill-hd"><span class="skill-ico">🤖</span><span class="skill-name">AI Engineering</span></div>
+        <div class="tags"><span class="tag">AI Automation</span><span class="tag">Vibe Coding</span><span class="tag">LLM Pipeline</span><span class="tag">ChatBot</span><span class="tag">AI Powered App</span></div>
+      </div>
+      <div class="skill-card reveal d2">
+        <div class="skill-hd"><span class="skill-ico">💬</span><span class="skill-name">Prompt Engineering</span></div>
+        <div class="tags"><span class="tag">Prompt Design</span><span class="tag">Chain of Thought</span><span class="tag">Few-shot</span><span class="tag">System Prompt</span><span class="tag">Output Optimization</span></div>
+      </div>
+      <div class="skill-card reveal d3">
+        <div class="skill-hd"><span class="skill-ico">🌐</span><span class="skill-name">Web Development</span></div>
+        <div class="tags"><span class="tag">Landing Page</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Streamlit</span><span class="tag">Vercel</span></div>
+      </div>
+      <div class="skill-card reveal d1">
+        <div class="skill-hd"><span class="skill-ico">🎨</span><span class="skill-name">Graphic Design</span></div>
+        <div class="tags"><span class="tag">Logo Design</span><span class="tag">Canva</span><span class="tag">Poster</span><span class="tag">Branding</span><span class="tag">Content Visual</span></div>
+      </div>
+      <div class="skill-card reveal d2">
+        <div class="skill-hd"><span class="skill-ico">🔐</span><span class="skill-name">Cyber Security</span></div>
+        <div class="tags"><span class="tag">Edukasi Siber</span><span class="tag">Keylogger Awareness</span><span class="tag">Network Security</span><span class="tag">MikroTik</span></div>
+      </div>
+      <div class="skill-card reveal d3">
+        <div class="skill-hd"><span class="skill-ico">💡</span><span class="skill-name">Soft Skills</span></div>
+        <div class="tags"><span class="tag">Kepemimpinan</span><span class="tag">Public Speaking</span><span class="tag">Komunikasi</span><span class="tag">Analisa</span><span class="tag">Problem Solving</span></div>
+      </div>
+      <div class="skill-card reveal d1">
+        <div class="skill-hd"><span class="skill-ico">📱</span><span class="skill-name">Social Media Specialist</span></div>
+        <div class="tags"><span class="tag">Feed Instagram</span><span class="tag">Content Strategy</span><span class="tag">Visual Storytelling</span><span class="tag">Reels</span><span class="tag">Community Management</span></div>
+      </div>
+      <div class="skill-card reveal d2">
+        <div class="skill-hd"><span class="skill-ico">📋</span><span class="skill-name">Manajemen</span></div>
+        <div class="tags"><span class="tag">Ketua OSIS</span><span class="tag">Ketua Angkatan</span><span class="tag">Kepemimpinan Tim</span><span class="tag">Organisasi</span><span class="tag">Event Management</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">// 03 — experience</p>
+      <h2 class="sec-title">Pengalaman <span>&amp; Prestasi</span></h2>
+      <div class="sec-div"></div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div><p class="exp-period">2022 — 2023</p><span class="exp-type">organisasi</span></div>
+      <div>
+        <p class="exp-co">// SMK Banjar Asri Cimaung</p>
+        <p class="exp-role">Ketua OSIS</p>
+        <p class="exp-desc">Memimpin organisasi siswa, mengelola kegiatan sekolah, dan menjadi representasi siswa di hadapan pihak sekolah. Mengembangkan kemampuan kepemimpinan, komunikasi, dan manajemen tim secara nyata. Saya juga seorang anggota dari FOJB (Forum Osis Jawa Barat) dan HIPOSIS Kab. Bandung.</p>
+        <div class="tags"><span class="tag">Kepemimpinan</span><span class="tag">Public Speaking</span><span class="tag">Manajemen Event</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div><p class="exp-period">2020 — 2023</p><span class="exp-type">pendidikan</span></div>
+      <div>
+        <p class="exp-co">// SMK Banjar Asri Cimaung</p>
+        <p class="exp-role">TKJ — Teknik Komputer dan Jaringan 🏆</p>
+        <p class="exp-desc">Lulus dengan nilai akademik tertinggi di antara seluruh murid dari semua jurusan. Mempelajari jaringan komputer, troubleshooting hardware/software, instalasi OS, dan keamanan siber. PRAKERIN dengan nilai Sangat Memuaskan. Pernah mewakili jurusan TKJ dan Sekolah dalam Tournament Game Online.</p>
+        <div class="tags"><span class="tag">TKJ</span><span class="tag">PRAKERIN ⭐ Sangat Memuaskan</span><span class="tag">MikroTik</span><span class="tag">Nilai Tertinggi</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div><p class="exp-period">2022 — Sekarang</p><span class="exp-type">freelance</span></div>
+      <div>
+        <p class="exp-co">// VixelBoy Studio</p>
+        <p class="exp-role">AI Engineer · Prompt Engineer · Designer · Jockey Task</p>
+        <p class="exp-desc">Mengerjakan proyek AI automation, prompt engineering, desain grafis (logo, poster, branding), pembuatan landing page, dan konten edukasi keamanan siber. Klien mencakup komunitas esports, organisasi keagamaan, dan UMKM lokal. Juga menyediakan layanan Jockey Task — membantu menyelesaikan tugas pembelajaran secara efisien.</p>
+        <div class="tags"><span class="tag">AI Automation</span><span class="tag">Prompt Eng.</span><span class="tag">Logo Design</span><span class="tag">Landing Page</span><span class="tag">Vibe Coding</span><span class="tag">Jockey Task</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">// 04 — projects</p>
+      <h2 class="sec-title">Portfolio <span>&amp; Projects</span></h2>
+      <div class="sec-div"></div>
+      <!-- FILTER TABS -->
+      <div class="filter-wrap reveal">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="ai">AI / Automation</button>
+        <button class="filter-btn" data-filter="web">Web / App</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="edu">Edukasi</button>
+      </div>
+    </div>
+    <div class="porto-grid" id="porto-grid">
+
+      <!-- 1. TikTok Downloader -->
+      <div class="porto-card reveal d1" data-cat="web">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#010108,#0d0d20);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+              <rect width="24" height="24" rx="6" fill="#010108"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.96a8.19 8.19 0 0 0 4.78 1.52V7.04a4.85 4.85 0 0 1-1.01-.35z" fill="white"/>
+            </svg>
+            <p class="porto-ph-txt" style="color:var(--blue-b);">TikTok Downloader</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">WEB APP</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">Web Development · Tool</p>
+          <h3 class="porto-title">TikTok Downloader</h3>
+          <p class="porto-desc">Web app untuk mendownload video TikTok tanpa watermark. Input URL → proses otomatis → download langsung. Cepat, gratis, dan tanpa login.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">API</span><span class="tag">Web Scraping</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">GitHub ↗</a>
+            <a href="https://tiktok-downloader-pro.streamlit.app/" target="_blank" class="porto-link">Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Chatbot AI -->
+      <div class="porto-card reveal d2" data-cat="ai">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#030d1a,#071428);">
+            <div style="position:relative;width:60px;height:60px;">
+              <div style="position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));opacity:.2;animation:chatpulse 2s ease-in-out infinite;"></div>
+              <div style="position:absolute;inset:6px;background:var(--bg3);border-radius:50%;border:1px solid var(--border-b);display:flex;align-items:center;justify-content:center;font-size:22px;">🤖</div>
+            </div>
+            <p class="porto-ph-txt" style="color:var(--cyan);">AI Chatbot</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">AI</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">AI Engineering · Chatbot</p>
+          <h3 class="porto-title">Chatbot AI</h3>
+          <p class="porto-desc">Chatbot berbasis LLM dengan custom system prompt dan memori percakapan. Bisa dikustomisasi untuk berbagai use-case: customer service, asisten belajar, hingga Q&amp;A otomatis.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Prompt Eng.</span><span class="tag">AI</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">GitHub ↗</a>
+            <a href="/cdn-cgi/l/email-protection#660b130e070b07020f0d04070a120711070d070a26010b070f0a4805090b" class="porto-link">Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Word File Automation -->
+      <div class="porto-card reveal d3" data-cat="ai">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#03080f,#071520);">
+            <div style="display:flex;gap:8px;align-items:flex-end;">
+              <div style="width:18px;height:38px;background:linear-gradient(to top,#2b579a,#40d0ff);border-radius:3px;opacity:.8;"></div>
+              <div style="width:18px;height:28px;background:linear-gradient(to top,#2b579a,#40d0ff);border-radius:3px;opacity:.6;"></div>
+              <div style="width:18px;height:44px;background:linear-gradient(to top,#2b579a,#40d0ff);border-radius:3px;opacity:1;"></div>
+              <div style="width:18px;height:22px;background:linear-gradient(to top,#2b579a,#40d0ff);border-radius:3px;opacity:.5;"></div>
+            </div>
+            <p class="porto-ph-txt" style="color:var(--blue-b);">Word Automation</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">AUTOMATION</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">AI Automation · Office Tools</p>
+          <h3 class="porto-title">Word File Automation</h3>
+          <p class="porto-desc">Otomasi pembuatan dokumen Word secara massal dari template + data. Generate surat, laporan, atau dokumen ratusan file hanya dalam hitungan detik — no copy-paste manual.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Python</span><span class="tag">python-docx</span><span class="tag">Automation</span><span class="tag">Template</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">GitHub ↗</a>
+            <a href="/cdn-cgi/l/email-protection#58352d303935393c31333a39342c392f39333934183f35393134763b3735" class="porto-link">Diskusi ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. PPT Generator -->
+      <div class="porto-card reveal d1" data-cat="ai">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#0d0308,#1a0510);">
+            <div style="width:60px;height:44px;background:linear-gradient(135deg,#c43e1c,#ff6b35);border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 8px,rgba(255,255,255,.06) 8px,rgba(255,255,255,.06) 9px);"></div>
+              <span style="font-size:22px;position:relative;">📊</span>
+            </div>
+            <p class="porto-ph-txt" style="color:#ff6b35;">PPT Generator</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">AI · AUTO</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">AI Automation · Productivity</p>
+          <h3 class="porto-title">PPT Generator (AI-Powered)</h3>
+          <p class="porto-desc">Generate presentasi PowerPoint otomatis dari topik atau outline teks. AI menyusun konten, struktur slide, dan desain secara instan — cocok untuk presentasi, pitch deck, dan materi ajar.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Python</span><span class="tag">python-pptx</span><span class="tag">LLM</span><span class="tag">AI Generate</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">GitHub ↗</a>
+            <a href="/cdn-cgi/l/email-protection#f598809d949894919c9e979499819482949e9499b59298949c99db969a98" class="porto-link">Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Finance Web Yayasan -->
+      <div class="porto-card reveal d2" data-cat="web">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#030d08,#071a10);">
+            <div style="display:flex;flex-direction:column;gap:6px;width:80px;">
+              <div style="height:8px;background:linear-gradient(90deg,#00ff88,transparent);border-radius:4px;width:100%;"></div>
+              <div style="height:8px;background:linear-gradient(90deg,#00ff88,transparent);border-radius:4px;width:75%;"></div>
+              <div style="height:8px;background:linear-gradient(90deg,#00ff88,transparent);border-radius:4px;width:60%;"></div>
+              <div style="height:1px;background:rgba(0,255,136,.2);margin:2px 0;"></div>
+              <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#00ff88;">Rp</span><span style="font-size:10px;color:#00cc6a;">▲ 12%</span></div>
+            </div>
+            <p class="porto-ph-txt" style="color:#00ff88;">Finance Dashboard</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">WEB APP</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">Web Development · Finance</p>
+          <h3 class="porto-title">Finance Web — Yayasan</h3>
+          <p class="porto-desc">Sistem manajemen keuangan berbasis web untuk organisasi yayasan. Fitur: input transaksi, laporan pemasukan/pengeluaran, dashboard visualisasi, dan export data keuangan.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Web App</span><span class="tag">Dashboard</span><span class="tag">Finance</span><span class="tag">Supabase</span><span class="tag">Chart.js</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">GitHub ↗</a>
+            <a href="https://ytkp-finance-ba.vercel.app/" target="_blank" class="porto-link">Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. AI Partner TKJ -->
+      <div class="porto-card reveal d3" data-cat="ai">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#030810,#071020);">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--violet));display:flex;align-items:center;justify-content:center;font-size:22px;">🎓</div>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <div style="width:40px;height:6px;background:var(--blue);border-radius:3px;opacity:.8;"></div>
+                <div style="width:30px;height:6px;background:var(--cyan);border-radius:3px;opacity:.5;"></div>
+                <div style="width:50px;height:6px;background:var(--violet);border-radius:3px;opacity:.6;"></div>
+              </div>
+            </div>
+            <p class="porto-ph-txt" style="color:var(--cyan);">AI Partner TKJ</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">AI · EDU</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">AI Engineering · Edukasi TKJ</p>
+          <h3 class="porto-title">AI Partner TKJ</h3>
+          <p class="porto-desc">Asisten AI khusus siswa TKJ — menjawab pertanyaan seputar jaringan komputer, MikroTik, troubleshooting, keamanan siber, dan materi ujian kompetensi secara interaktif berbasis LLM.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">AI Chatbot</span><span class="tag">TKJ</span><span class="tag">LLM</span><span class="tag">Edukasi</span><span class="tag">Prompt Eng.</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">GitHub ↗</a>
+            <a href="https://yourpartnertkj.streamlit.app/" target="_blank" class="porto-link">Coba Sekarang ↗</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <!-- 10. Design Portfolio -->
+      <div class="porto-card reveal d1" data-cat="design">
+        <div class="porto-media">
+          <img src="img_graphicdesign.png" alt="Graphic Design Portfolio">
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">PORTFOLIO</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">Graphic Design · Personal Brand</p>
+          <h3 class="porto-title">VixelBoy — Design Portfolio</h3>
+          <p class="porto-desc">Kompilasi portofolio desain grafis: logo, poster, konten edukasi, dan karya kreatif lainnya. Dari minimalis hingga gaming aesthetics.</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Portfolio</span><span class="tag">Multi-Style</span><span class="tag">Creative</span></div>
+          <div class="porto-foot">
+            <a href="https://www.canva.com/design/DAHE8Yz27d4/2egeRHQG3LeMVIvL0HLvVA/edit?utm_content=DAHE8Yz27d4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="porto-link">Akses ↗</a>
+            <a href="/cdn-cgi/l/email-protection#a0cdd5c8c1cdc1c4c9cbc2c1ccd4c1d7c1cbc1cce0c7cdc1c9cc8ec3cfcd" class="porto-link">Kolaborasi ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Other Projects -->
+      <div class="porto-card reveal d2" data-cat="ai">
+        <div class="porto-media">
+          <div class="porto-ph-box" style="background:linear-gradient(135deg,#060310,#0d0720);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;width:70px;">
+              <div style="height:28px;background:var(--bg3);border:1px solid var(--border-b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;">⚙️</div>
+              <div style="height:28px;background:var(--bg3);border:1px solid var(--border-b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;">📱</div>
+              <div style="height:28px;background:var(--bg3);border:1px solid var(--border-b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;">🔗</div>
+              <div style="height:28px;background:var(--bg3);border:1px solid var(--border-b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;">+</div>
+            </div>
+            <p class="porto-ph-txt" style="color:var(--violet);">More Projects</p>
+          </div>
+          <div class="porto-overlay"><div class="porto-play">↗</div></div>
+          <div class="porto-fmt">+MORE</div>
+        </div>
+        <div class="porto-body">
+          <p class="porto-cat">Various · Ongoing</p>
+          <h3 class="porto-title">Other Projects &amp; Experiments</h3>
+          <p class="porto-desc">Berbagai project lain yang sedang dikerjakan: AI tools, mini app, script automation, dan eksperimen teknologi terbaru. Selalu ada yang baru di GitHub!</p>
+          <div class="tags" style="margin-bottom:12px"><span class="tag">Ongoing</span><span class="tag">Experiments</span><span class="tag">AI Tools</span><span class="tag">Open Source</span></div>
+          <div class="porto-foot">
+            <a href="https://github.com/vixelboy" target="_blank" class="porto-link">Lihat Semua ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTS ═══ -->
+<section id="certs">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">// 05 — certifications</p>
+      <h2 class="sec-title">Sertifikat <span>&amp; Pencapaian</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="cert-grid">
+
+      <div class="cert-card reveal d1">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="12" width="4" height="9" rx="1" fill="var(--blue)"/>
+            <rect x="10" y="7" width="4" height="14" rx="1" fill="var(--cyan)"/>
+            <rect x="17" y="3" width="4" height="18" rx="1" fill="var(--violet)"/>
+            <path d="M3 10l7-5 7 3 4-4" stroke="var(--blue-b)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name"><a href="https://www.dicoding.com/certificates/98XW0RKJLXM3" target="_blank" style="color:var(--text);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--blue-b)'" onmouseout="this.style.color='var(--text)'">Data Science dengan Microsoft Fabric ↗</a></p>
+          <p class="cert-issuer">Dicoding Indonesia · #98XW0RKJLXM3</p>
+          <p class="cert-yr">Feb 2026 · Berlaku s/d 2029</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d2">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);padding:4px;">
+          <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#00b4ff"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#40d0ff"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#00ffee"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#7b5cff"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Google Developer Program — Tingkat Premium</p>
+          <p class="cert-issuer">Google · Pengguna Android Studio</p>
+          <p class="cert-yr">Feb 2026</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d3">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="10" width="14" height="10" rx="2" stroke="var(--blue)" stroke-width="1.5"/>
+            <circle cx="9" cy="9" r="2" stroke="var(--cyan)" stroke-width="1.5"/>
+            <circle cx="15" cy="9" r="2" stroke="var(--cyan)" stroke-width="1.5"/>
+            <path d="M7 7L5 4M17 7l2-3" stroke="var(--blue-b)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="9" cy="15" r="1" fill="var(--blue)"/>
+            <circle cx="15" cy="15" r="1" fill="var(--blue)"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Pengguna Android Studio</p>
+          <p class="cert-issuer">Google Developer Badge</p>
+          <p class="cert-yr">Feb 2026</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d1">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" fill="var(--blue)" opacity="0.8"/>
+            <circle cx="12" cy="12" r="6" stroke="var(--blue)" stroke-width="1" opacity="0.4"/>
+            <circle cx="12" cy="12" r="9" stroke="var(--cyan)" stroke-width="1" opacity="0.3"/>
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="var(--blue-b)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="var(--cyan)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Uji Kompetensi MikroTik</p>
+          <p class="cert-issuer">LSP Sekolah — Nilai: Sangat Kompeten</p>
+          <p class="cert-yr">2023</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d2">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="var(--blue)" stroke-width="1.5"/>
+            <path d="M7 9h10M7 12h7M7 15h5" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="17" cy="14" r="2.5" fill="var(--blue)" opacity="0.8"/>
+            <path d="M15.5 14l1 1 2-2" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">TOEIC — English Proficiency</p>
+          <p class="cert-issuer">Elementary Proficiency Plus</p>
+          <p class="cert-yr">2023</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d3">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="7" width="18" height="14" rx="2" stroke="var(--blue)" stroke-width="1.5"/>
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="var(--blue-b)" stroke-width="1.5"/>
+            <path d="M8 13h8M8 17h5" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">PRAKERIN</p>
+          <p class="cert-issuer">Praktik Kerja Lapangan — Sangat Memuaskan</p>
+          <p class="cert-yr">2022</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d1">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="8" height="8" rx="1" fill="var(--blue)" opacity="0.9"/>
+            <rect x="13" y="3" width="8" height="8" rx="1" fill="var(--cyan)" opacity="0.7"/>
+            <rect x="3" y="13" width="8" height="8" rx="1" fill="var(--violet)" opacity="0.8"/>
+            <rect x="13" y="13" width="8" height="8" rx="1" fill="var(--blue-b)" opacity="0.6"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Microsoft Office</p>
+          <p class="cert-issuer">Sertifikasi Kompetensi Microsoft Office</p>
+          <p class="cert-yr">2022</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d3">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="5" width="20" height="14" rx="2" stroke="var(--blue)" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" stroke="var(--cyan)" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="1" fill="var(--blue)"/>
+            <path d="M7 9l-2-2M17 9l2-2M7 15l-2 2M17 15l2 2" stroke="var(--blue-b)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Sertifikat IJTI</p>
+          <p class="cert-issuer">Course Ikatan Jurnalis Televisi Indonesia</p>
+          <p class="cert-yr">2023</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d1">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="7" r="3" stroke="var(--blue-b)" stroke-width="1.5"/>
+            <path d="M5 20c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M18 3l1.5 1.5M20 7h2M18 11l1.5-1.5" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Leadership — Sertifikasi Penghargaan</p>
+          <p class="cert-issuer">Sertifikasi Penghargaan Kepemimpinan</p>
+          <p class="cert-yr">2023</p>
+        </div>
+      </div>
+
+      <div class="cert-card reveal d2">
+        <div class="cert-ico" style="background:var(--bg3);border-color:var(--border-b);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="var(--blue-b)" stroke="var(--blue)" stroke-width="0.5" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px var(--blue));"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cert-name">Lulusan Terbaik</p>
+          <p class="cert-issuer">SMK Banjar Asri Cimaung · Semua Jurusan</p>
+          <p class="cert-yr">2023</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">// 06 — contact</p>
+      <h2 class="sec-title">Mari <span>Terhubung</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <h3 class="contact-lead">Ada project menarik?<br><span>Let's build together.</span></h3>
+        <p class="contact-sub">Terbuka untuk kolaborasi AI, desain grafis, landing page, atau diskusi teknis. Response biasanya kurang dari 24 jam — jangan ragu untuk reach out!</p>
+        <div class="tc" style="max-width:340px">
+          <div class="tc-bar"><div class="tc-dot r"></div><div class="tc-dot y"></div><div class="tc-dot g"></div><span class="tc-ttl">ping.sh</span></div>
+          <div class="tc-body">
+            <div class="tc-l"><span class="p">$</span> ping <span class="s">@vixelboy_</span></div>
+            <div class="tc-l" style="margin-top:4px"><span class="c">→</span> <span class="v">Response: &lt; 24h ✓</span></div>
+            <div class="tc-l"><span class="p">$</span> <span class="k">status</span>: <span class="c">open_collaboration</span></div>
+            <div class="tc-l" style="margin-top:4px"><span class="c">→</span> <span class="s">in tkj we trust</span> 🔐</div>
+            <div class="tc-l"><span class="p">$</span> <span class="tc-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="c-links">
+        <a href="/cdn-cgi/l/email-protection#84e9f1ece5e9e5e0edefe6e5e8f0e5f3e5efe5e8c4e3e9e5ede8aae7ebe9" class="c-link">
+          <div class="c-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--blue-b)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 4px var(--blue))"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div><div class="c-lbl">email</div><div style="font-size:12px;"><span class="__cf_email__" data-cfemail="e38e968b828e82878a8881828f9782948288828fa3848e828a8fcd808c8e">[email&#160;protected]</span></div></div>
+        </a>
+        <a href="https://wa.me/6208817835601" target="_blank" class="c-link">
+          <div class="c-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--blue-b)" style="filter:drop-shadow(0 0 4px var(--blue))"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </div>
+          <div><div class="c-lbl">whatsapp</div><div>08817835601</div></div>
+        </a>
+        <a href="https://github.com/vixelboy" target="_blank" class="c-link">
+          <div class="c-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--blue-b)" style="filter:drop-shadow(0 0 4px var(--blue))"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div><div class="c-lbl">github</div><div>github.com/vixelboy</div></div>
+        </a>
+        <a href="https://instagram.com/vixelboy_" target="_blank" class="c-link">
+          <div class="c-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--blue-b)" style="filter:drop-shadow(0 0 4px var(--blue))"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </div>
+          <div><div class="c-lbl">instagram</div><div>@vixelboy_</div></div>
+        </a>
+        <a href="https://tiktok.com/@vixelboy_" target="_blank" class="c-link">
+          <div class="c-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--blue-b)" style="filter:drop-shadow(0 0 4px var(--blue))"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.96a8.19 8.19 0 0 0 4.78 1.52V7.04a4.85 4.85 0 0 1-1.01-.35z"/></svg>
+          </div>
+          <div><div class="c-lbl">tiktok</div><div>@vixelboy_</div></div>
+        </a>
+        <a href="https://facebook.com/vixelboy_" target="_blank" class="c-link">
+          <div class="c-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--blue-b)" style="filter:drop-shadow(0 0 4px var(--blue))"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <div><div class="c-lbl">facebook</div><div>@vixelboy_</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span style="color:var(--blue)">▶</span>&nbsp;
+  <span style="color:var(--blue-b)">Muhamad Ikbal Tawakal</span>&nbsp;·&nbsp;
+  @vixelboy_ &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Bandung, West Java, ID
+  <span style="margin-left:auto;color:var(--text-dim)">root@vixelboy:~$&nbsp;<span style="color:var(--blue)">_</span></span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const secs = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if(s.getBoundingClientRect().top <= 100) cur = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, {passive:true});
+
+// Fallback: pastikan semua elemen hero langsung terlihat jika animasi tidak jalan
+window.addEventListener('load', () => {
+  document.querySelectorAll('.hero-badge,.hero-name,.hero-role,.hero-desc,.hero-ctas,.hero-tools').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  });
+  // Trigger reveal untuk elemen yang sudah di viewport
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
